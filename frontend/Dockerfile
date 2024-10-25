@@ -1,9 +1,14 @@
-FROM node:20
+FROM node:20.11.1-alpine3.19 AS build
 
-# Frontend Docker startup
 WORKDIR /usr/src/app/frontend
+
+COPY package.json yarn.lock ./
+
+RUN rm -rf node_modules && yarn cache clean && yarn install
+RUN yarn add -D vite
+
 COPY . .
-RUN npm install
+
 EXPOSE 5173
-# RUN npm run build
-CMD ["npm","run", "dev"]
+
+CMD ["yarn", "dev"]
