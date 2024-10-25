@@ -1,0 +1,21 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/usr/src/app/backend # Mount the local backend directory to the container for live reload
+    command: npm run start # Use the dev script with nodemon for auto-reloading
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/usr/src/app/frontend # Enable hot reloading
+    command: ["npm", "run", "dev"] # Start Vite in development mode
