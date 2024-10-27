@@ -1,18 +1,18 @@
-<h1>GAPP - Gardening Application fejlesztése</h1>
-<h2>Az applikáció felállításához:</h2>
+<h1 style="color: #A9DBB8;">GAPP - Gardening Application</h1>
+<h2>Az applikáció felállításához (terminálban):</h2>
 <ol>
-    <li>Backend
+    <li style="color: #ECA72C;">Backend
     <ul>
-        <li>cd backend</li>
-        <li>yarn install</li>
-        <li>nodemon app.js</li>
+        <li style="font-style: italic;">cd backend</li>
+        <li style="font-style: italic;">yarn install</li>
+        <li style="font-style: italic;">nodemon app.js</li>
     </ul>
     </li>
-    <li>Frontend
+    <li style="color: #4FB0C6 ;">Frontend
     <ul>
-        <li>cd frontend</li>
-        <li>yarn install</li>
-        <li>vite</li>
+        <li style="font-style: italic;">cd frontend</li>
+        <li style="font-style: italic;">yarn install</li>
+        <li style="font-style: italic;">vite</li>
     </ul>
     </li>
 </ol>
