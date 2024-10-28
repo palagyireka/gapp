@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# TailAdmin React - Free React Tailwind Admin Dashboard Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### [📄 Documentation/Installation](https://tailadmin.com/docs)
 
-Currently, two official plugins are available:
+- Use terminal and navigate to the project (tailadmin-react) root.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Then run : <code>npm install</code>
 
-## Expanding the ESLint configuration
+- Then run : <code>npm run dev</code>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Now, in the browser go to <code>localhost:5173</code>
 
-- Configure the top-level `parserOptions` property like this:
+**For Production Build**
+Run : <code>npm run build</code>
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Default build output directory: /dist
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+This command will generate a dist as build folder in the root of your template that you can upload to your server.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Tons of React Tailwind Components for Dashboard
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+React and Tailwind are two popular technologies that have taken the web development world by storm. React is a JavaScript library for building user interfaces, while Tailwind is a utility-first CSS framework that makes it easy to style web applications. TailAdmin React Offers 200+ Essential React + Tailwind CSS UI Components that you copy-paste and use with your dashboard projects. That includes - charts, graphs, navbars, tabs, buttons, cards, tables, profile, tabs, forms, modals, app pages, calender, web apps example templates and more... for React and Styled using Tailwind CSS
+
+## Update Logs
+
+### Version 1.3.7 - [June 20, 2024]
+
+#### Enhancements
+
+- **Enhancement 01:** Remove Repetition of DefaultLayout in every Pages
+- **Enhancement 02:** Add ClickOutside Component for reduce repeated functionality in Header Message, Notification and User Dropdowns.
+
+### Version 1.3.6 - [Jan 31, 2024]
+
+#### Enhancements
+
+- **Enhancement 01:** Integrate flatpickr in [Date Picker/Form Elements]
+- **Enhancement 02:** Change color after select an option [Select Element/Form Elements].
+- **Enhancement 03:** Make it functional [Multiselect Dropdown/Form Elements].
+- **Enhancement 04:** Make best value editable [Pricing Table One/Pricing Table].
+- **Enhancement 05:** Rearrange Folder structure.
+
+### Version 1.2.0 - [Apr 28, 2023]
+
+- Add Typescript in TailAdmin React.
+
+### Version 1.0.0 - Initial Release - [Mar 13, 2023]
+
+- Initial release of TailAdmin React.

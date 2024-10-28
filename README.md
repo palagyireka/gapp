@@ -11,8 +11,8 @@
     <li style="color: #4FB0C6 ;">Frontend
     <ul>
         <li style="font-style: italic;">cd frontend</li>
-        <li style="font-style: italic;">yarn install</li>
-        <li style="font-style: italic;">vite</li>
+        <li style="font-style: italic;">npm install</li>
+        <li style="font-style: italic;">npm run dev</li>
     </ul>
     </li>
 </ol>
