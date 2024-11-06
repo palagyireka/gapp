@@ -1,10 +1,21 @@
 import { useState } from 'react';
 
-const SwitcherTwo = () => {
-  const [enabled, setEnabled] = useState(false);
+interface SwitcherTwoProps {
+  label_left: string;
+  label_right: string;
+  checked: boolean;
+}
+
+const SwitcherTwo: React.FC<SwitcherTwoProps> = ({
+  label_left,
+  label_right,
+  checked,
+}) => {
+  const [enabled, setEnabled] = useState(checked);
 
   return (
     <div x-data="{ switcherToggle: false }">
+      <div className="pr-3 text-lg">{label_left}</div>
       <label
         htmlFor="toggle2"
         className="flex cursor-pointer select-none items-center"
@@ -25,6 +36,7 @@ const SwitcherTwo = () => {
             }`}
           ></div>
         </div>
+        <div className="pl-3 text-lg">{label_right}</div>
       </label>
     </div>
   );

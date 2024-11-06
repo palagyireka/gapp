@@ -1,22 +1,40 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const CheckboxTwo = () => {
-  const [isChecked, setIsChecked] = useState<boolean>(false);
+interface CheckboxTwoProps {
+  label: string;
+  checked: boolean;
+  id: string;
+}
+
+const CheckboxTwo: React.FC<CheckboxTwoProps> = ({ label, checked, id }) => {
+  const [isChecked, setIsChecked] = useState<boolean>(() => {
+    const savedState = localStorage.getItem(id);
+    if (savedState) {
+      return savedState === 'true'; // From string to boolean
+    } else {
+      return checked;
+    }
+  });
+
+  const handleChange = () => {
+    const newCheckedState = !isChecked;
+    setIsChecked(newCheckedState);
+    localStorage.setItem(id, newCheckedState.toString()); // Save boolean state as a string
+  };
 
   return (
     <div>
       <label
-        htmlFor="checkboxLabelTwo"
+        htmlFor={id}
         className="flex cursor-pointer select-none items-center"
       >
         <div className="relative">
           <input
             type="checkbox"
-            id="checkboxLabelTwo"
+            id={id}
             className="sr-only"
-            onChange={() => {
-              setIsChecked(!isChecked);
-            }}
+            checked={isChecked}
+            onChange={handleChange}
           />
           <div
             className={`mr-4 flex h-5 w-5 items-center justify-center rounded border ${
@@ -41,7 +59,7 @@ const CheckboxTwo = () => {
             </span>
           </div>
         </div>
-        Checkbox Text
+        <div className="pl-3 text-lg">{label}</div>
       </label>
     </div>
   );

@@ -1,7 +1,12 @@
 import { useState } from 'react';
 
-const SwitcherThree = () => {
-  const [enabled, setEnabled] = useState(false);
+interface SwitcherThreeProps {
+  label: string;
+  checked: boolean;
+}
+
+const SwitcherThree: React.FC<SwitcherThreeProps> = ({ label, checked }) => {
+  const [enabled, setEnabled] = useState(checked);
 
   return (
     <div>
@@ -58,6 +63,7 @@ const SwitcherThree = () => {
             </span>
           </div>
         </div>
+        <div className="pl-3 text-lg">{label}</div>
       </label>
     </div>
   );

@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
-import DropdownUser from './DropdownUser';
-import LogoIcon from '../../images/logo/logo-icon.svg';
 import DarkModeSwitcher from './DarkModeSwitcher';
+import LogoIcon from '../../images/logo/logo-icon.svg';
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
   return (
-    <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
+    <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none h-24">
       <div className="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
         <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
           {/* <!-- Hamburger Toggle BTN --> */}
@@ -65,7 +64,7 @@ const Header = (props: {
               <input
                 type="text"
                 placeholder="Keress rá bármilyen növényre..."
-                className="w-full bg-transparent pl-1 pr-4 text-black focus:outline-none dark:text-white xl:w-125"
+                className="text-xl w-full bg-transparent pl-1 pr-4 text-black focus:outline-none dark:text-white xl:w-125"
               />
               {/* Search button */}
               <button className="absolute right-0 top-1/2 -translate-y-1/2">
@@ -101,10 +100,6 @@ const Header = (props: {
             <DarkModeSwitcher />
             {/* <!-- Dark Mode Toggler --> */}
           </ul>
-
-          {/* <!-- User Area --> */}
-          <DropdownUser />
-          {/* <!-- User Area --> */}
         </div>
       </div>
     </header>
