@@ -1,0 +1,59 @@
+{
+  "access_token": "5HzJDLS7RjxD9J7",
+  "model_version": "insect_id:2.0.0",
+  "custom_id": null,
+  "input": {
+    "latitude": 49.207,
+    "longitude": 16.608,
+    "similar_images": true,
+    "images": [
+      "https://insect.kindwise.com/media/images/b37465984c8f4a1a98e39c559fe1c7c4.jpg"
+    ],
+    "datetime": "2024-11-07T22:04:34.604413+00:00"
+  },
+  "result": {
+    "classification": {
+      "suggestions": [
+        {
+          "id": "7689073a3b7396ae",
+          "name": "Aphis aurantii",
+          "probability": 0.9871,
+          "similar_images": [
+            {
+              "id": "fc7568d24972e75f2f1cd821ac6d908456cdf7ba",
+              "url": "https://insect-id.ams3.cdn.digitaloceanspaces.com/similar_images/2/fc7/568d24972e75f2f1cd821ac6d908456cdf7ba.jpg",
+              "license_name": "CC0",
+              "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+              "citation": "Jesse Rorabaugh",
+              "similarity": 0.605,
+              "url_small": "https://insect-id.ams3.cdn.digitaloceanspaces.com/similar_images/2/fc7/568d24972e75f2f1cd821ac6d908456cdf7ba.small.jpg"
+            },
+            {
+              "id": "00bcda5e9ef30363ad2e6cca0602ff30ac510e15",
+              "url": "https://insect-id.ams3.cdn.digitaloceanspaces.com/similar_images/2/00b/cda5e9ef30363ad2e6cca0602ff30ac510e15.jpg",
+              "license_name": "CC0",
+              "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+              "citation": "Jesse Rorabaugh",
+              "similarity": 0.594,
+              "url_small": "https://insect-id.ams3.cdn.digitaloceanspaces.com/similar_images/2/00b/cda5e9ef30363ad2e6cca0602ff30ac510e15.small.jpg"
+            }
+          ],
+          "details": {
+            "language": "hu",
+            "entity_id": "7689073a3b7396ae"
+          }
+        }
+      ]
+    },
+    "is_insect": {
+      "probability": 0.8107244,
+      "threshold": 0.5,
+      "binary": true
+    }
+  },
+  "status": "COMPLETED",
+  "sla_compliant_client": true,
+  "sla_compliant_system": true,
+  "created": 1731017074.604413,
+  "completed": 1731017074.858219
+}

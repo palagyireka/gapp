@@ -1,0 +1,90 @@
+{
+  "access_token": "TBUcxtSvOU62a6u",
+  "model_version": "plant_id:4.1.2",
+  "custom_id": null,
+  "input": {
+    "latitude": 49.207,
+    "longitude": 16.608,
+    "similar_images": true,
+    "images": [
+      "https://plant.id/media/imgs/613269df79ae4d8ea51c7e7627acf01d.jpg"
+    ],
+    "datetime": "2024-11-07T15:09:26.844757+00:00"
+  },
+  "result": {
+    "is_plant": {
+      "probability": 0.9992623,
+      "threshold": 0.5,
+      "binary": true
+    },
+    "classification": {
+      "suggestions": [
+        {
+          "id": "62c4f6ac65e05756",
+          "name": "Vitis vinifera",
+          "probability": 0.99,
+          "similar_images": [
+            {
+              "id": "21aea3ce0fbb311a0997305471c01f2340d06371",
+              "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/4/21a/ea3ce0fbb311a0997305471c01f2340d06371.jpeg",
+              "license_name": "CC BY-SA 4.0",
+              "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "citation": "Asia Stella",
+              "similarity": 0.815,
+              "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/4/21a/ea3ce0fbb311a0997305471c01f2340d06371.small.jpeg"
+            },
+            {
+              "id": "9235acbb1fd1613918704202a1fb8a0bd03b8bb2",
+              "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/4/923/5acbb1fd1613918704202a1fb8a0bd03b8bb2.jpeg",
+              "license_name": "CC BY-SA 4.0",
+              "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "citation": "1",
+              "similarity": 0.725,
+              "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/4/923/5acbb1fd1613918704202a1fb8a0bd03b8bb2.small.jpeg"
+            }
+          ],
+          "details": {
+            "common_names": ["bortermő szőlő", "kerti szőlő"],
+            "taxonomy": {
+              "class": "Magnoliopsida",
+              "genus": "Vitis",
+              "order": "Vitales",
+              "family": "Vitaceae",
+              "phylum": "Tracheophyta",
+              "kingdom": "Plantae"
+            },
+            "url": "https://hu.wikipedia.org/wiki/Bortermő_szőlő",
+            "gbif_id": 5372392,
+            "inaturalist_id": 79519,
+            "rank": "species",
+            "description": {
+              "value": "A bortermő szőlő (Vitis vinifera) a szőlőfélék (Vitaceae) családjának legnevezetesebb, gazdaságilag legjelentősebb faja — mint neve is mutatja, a legfontosabb szőlő, amelyből a bor készül. A legtöbb, emberi fogyasztásra alkalmas szőlő a direkt termő (Vitis Labrusca) és a kereklevelű  (Vitis Rotundifolia) fajhoz tartozik.",
+              "citation": "https://hu.wikipedia.org/wiki/Bortermő_szőlő",
+              "license_name": "CC BY-SA 3.0",
+              "license_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+            },
+            "image": {
+              "value": "https://plant-id.ams3.cdn.digitaloceanspaces.com/knowledge_base/wikidata/497/497f1e5366d54393435ffe337ad48c1f72f57088.jpg",
+              "citation": "//commons.wikimedia.org/wiki/File:Vitis-vinifera.JPG",
+              "license_name": "CC BY 3.0",
+              "license_url": "https://creativecommons.org/licenses/by/3.0/"
+            },
+            "edible_parts": ["flowers", "leaves", "oil", "fruit", "shoots"],
+            "watering": {
+              "max": 2,
+              "min": 2
+            },
+            "propagation_methods": ["cuttings"],
+            "language": "hu",
+            "entity_id": "62c4f6ac65e05756"
+          }
+        }
+      ]
+    }
+  },
+  "status": "COMPLETED",
+  "sla_compliant_client": true,
+  "sla_compliant_system": true,
+  "created": 1730992166.844757,
+  "completed": 1730992167.050493
+}

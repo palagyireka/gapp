@@ -1,0 +1,60 @@
+{
+  "access_token": "3GGBHU7RKykcyPy",
+  "model_version": "crop_health:1.1.1",
+  "custom_id": null,
+  "input": {
+    "latitude": 49.207,
+    "longitude": 16.608,
+    "similar_images": true,
+    "images": [
+      "https://crop.kindwise.com/media/images/ac90a007e812474d80cb9fe0453e972d.jpg"
+    ],
+    "datetime": "2024-11-07T21:40:08.146550+00:00"
+  },
+  "result": {
+    "is_plant": {
+      "probability": 1,
+      "threshold": 0.5,
+      "binary": true
+    },
+    "disease": {
+      "suggestions": [
+        {
+          "id": "332e5a8ca8b185fc",
+          "name": "powdery mildew",
+          "probability": 0.99,
+          "similar_images": [
+            {
+              "id": "cc4c6687e7089141300370e0c8e8d80ffcfddb45",
+              "url": "https://crop-health.ams3.cdn.digitaloceanspaces.com/similar_images/1/cc4/c6687e7089141300370e0c8e8d80ffcfddb45.jpg",
+              "license_name": "CC BY 3.0",
+              "license_url": "https://creativecommons.org/licenses/by/3.0/",
+              "citation": "Dr. Parthasarathy Seethapathy, Amrita School of Agricultural Sciences",
+              "similarity": 0.834,
+              "url_small": "https://crop-health.ams3.cdn.digitaloceanspaces.com/similar_images/1/cc4/c6687e7089141300370e0c8e8d80ffcfddb45.small.jpg"
+            },
+            {
+              "id": "2b5a99e893b1183ac44f30959bf1762ca5fe0689",
+              "url": "https://crop-health.ams3.cdn.digitaloceanspaces.com/similar_images/1/2b5/a99e893b1183ac44f30959bf1762ca5fe0689.jpg",
+              "similarity": 0.805,
+              "url_small": "https://crop-health.ams3.cdn.digitaloceanspaces.com/similar_images/1/2b5/a99e893b1183ac44f30959bf1762ca5fe0689.small.jpg"
+            }
+          ],
+          "details": {
+            "language": "hu",
+            "entity_id": "332e5a8ca8b185fc"
+          },
+          "scientific_name": "Erysiphaceae"
+        }
+      ]
+    },
+    "crop": {
+      "suggestions": []
+    }
+  },
+  "status": "COMPLETED",
+  "sla_compliant_client": true,
+  "sla_compliant_system": true,
+  "created": 1731015608.14655,
+  "completed": 1731015608.604652
+}

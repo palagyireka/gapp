@@ -1,9 +1,87 @@
-import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
-import CheckboxTwo from '../../components/Checkboxes/CheckboxTwo';
-import DatePickerOne from '../../components/Forms/DatePicker/DatePickerOne';
-import SelectGroupTwo from '../../components/Forms/SelectGroup/SelectGroupTwo';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Breadcrumb from '../../../components/Breadcrumbs/Breadcrumb';
+import CheckboxTwo from '../../../components/Checkboxes/CheckboxTwo';
+import DatePickerOne from '../../../components/Forms/DatePicker/DatePickerOne';
+import SelectGroupTwo from '../../../components/Forms/SelectGroup/SelectGroupTwo';
 
-const FormElements = () => {
+const Identifier = () => {
+  const navigate = useNavigate(); // Hook to navigate to another page
+  const [loading, setLoading] = useState(false);
+
+  const [base64Images, setBase64Images] = useState<string[]>([]); // Initialize an array to hold multiple base64 strings
+
+  // Right after the upload of an image, the function converts it into a Base64 String and stores it in base64Images.
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      // Loop over all selected files
+      const newBase64Images: string[] = []; // Temporary array to hold new base64 strings
+
+      Array.from(files).forEach((file) => {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+          const base64String = reader.result as string;
+          newBase64Images.push(base64String);
+
+          // Once all files are read, update the state
+          if (newBase64Images.length === files.length) {
+            setBase64Images((prevImages) => [
+              ...prevImages,
+              ...newBase64Images,
+            ]);
+          }
+        };
+
+        reader.onerror = (error) => {
+          console.error('Error reading file:', error);
+        };
+
+        reader.readAsDataURL(file); // Initiates the base64 encoding
+      });
+    }
+  };
+
+  // Handles form submission, it sends an api req to plant.id to get the relevant information.
+  const handleApiReq = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    const apiKey = import.meta.env.VITE_IDENTIFICATION_API_KEY;
+    const details =
+      'common_names,url,description,taxonomy,rank,gbif_id,inaturalist_id,image,edible_parts,watering,propagation_methods';
+
+    try {
+      setLoading(true);
+      const response = await fetch(
+        `https://plant.id/api/v3/identification?details=${details}&language=hu`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Api-Key': `${apiKey}`,
+          },
+          body: JSON.stringify({
+            images: base64Images,
+            latitude: 49.207,
+            longitude: 16.608,
+            similar_images: true,
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      navigate('/forms/identifier/result', { state: { plantData: data } });
+    } catch (error) {
+      console.log(`API Request failed`, error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <Breadcrumb pageName="Növényhatározó" />
@@ -13,9 +91,8 @@ const FormElements = () => {
           növényt találtál, néztél ki magadnak, vagy esetleg kaptál valakitől.
         </p>
         <p>
-          Ezen kívül számos preferenciát, plusz információt is beállíthatsz.
-          Minden opciónak van egy alapértelmezett beállítása, de ajánlott kézzel
-          beállítani őket a hatékonyabb azonosítás érdekében.
+          Ezen kívül számos preferenciát, plusz információt is beállíthatsz a
+          hatékonyabb azonosítás érdekében.
         </p>
       </div>
       <form action="" method="post">
@@ -32,11 +109,12 @@ const FormElements = () => {
                 <label className="mb-3 block text-black dark:text-white">
                   Lehetőleg minél jobb felbontású, jó fényviszonyok közt készült
                   képet/képeket tölts fel! Háromnál többet feltölteni nem
-                  ajánlott.
+                  ajánlott. A képformátum .jpg vagy .png legyen.
                 </label>
                 <input
                   type="file"
-                  accept="image/*"
+                  accept="image/jpg, image/jpeg, image/png"
+                  onChange={handleFileUpload}
                   capture="environment"
                   multiple
                   className="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter file:py-3 file:px-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"
@@ -109,6 +187,7 @@ const FormElements = () => {
             <button
               className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from bg-meta-4 group-hover:bg-meta-4 dark:text-white dark:hover:text-black focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800"
               type="submit"
+              onClick={handleApiReq}
             >
               <span className="text-lg relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-boxdark rounded-md group-hover:bg-opacity-0">
                 Azonosítás indítása
@@ -121,4 +200,4 @@ const FormElements = () => {
   );
 };
 
-export default FormElements;
+export default Identifier;
