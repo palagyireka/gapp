@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-interface CheckboxTwoProps {
+interface CheckboxProps {
   label: string;
   checked: boolean;
   id: string;
 }
 
-const CheckboxTwo: React.FC<CheckboxTwoProps> = ({ label, checked, id }) => {
+const Checkbox: React.FC<CheckboxProps> = ({ label, checked, id }) => {
   const [isChecked, setIsChecked] = useState<boolean>(() => {
     const savedState = localStorage.getItem(id);
     if (savedState) {
@@ -65,4 +65,4 @@ const CheckboxTwo: React.FC<CheckboxTwoProps> = ({ label, checked, id }) => {
   );
 };
 
-export default CheckboxTwo;
+export default Checkbox;

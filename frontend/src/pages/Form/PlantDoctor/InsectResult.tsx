@@ -1,6 +1,5 @@
 import Breadcrumb from '../../../components/Breadcrumbs/Breadcrumb';
 import Probability from '../../../components/Forms/Probability';
-import EdibleParts from '../../../components/Forms/EdibleParts/EdibleParts';
 import { useLocation } from 'react-router-dom';
 
 const InsectResult = () => {

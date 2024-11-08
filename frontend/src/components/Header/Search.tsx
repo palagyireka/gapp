@@ -1,16 +1,24 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import DarkModeSwitcher from './DarkModeSwitcher';
+import SearchFilters from './SearchFilters';
 import LogoIcon from '../../images/logo/logo-icon.svg';
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
+  const [showFilters, setShowFilters] = useState(false);
+  // Ha valaki rákattint a keresésre, adjon ki rövid tájékoztatót a lehetőségekről.
+  const searchIntro = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setShowFilters(event.target.value.length > 0);
+
   return (
-    <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none h-24">
+    <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none h-fit">
       <div className="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
+        {/* Logó és hambimenü mobilra */}
         <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
-          {/* <!-- Hamburger Toggle BTN --> */}
+          {/* <!-- Hamburger Toggle BTN for mobile --> */}
           <button
             aria-controls="sidebar"
             onClick={(e) => {
@@ -59,17 +67,22 @@ const Header = (props: {
         </div>
 
         <div className="hidden sm:block flex-grow basis-[60%] mr-10">
-          <form action="https://formbold.com/s/unique_form_id" method="POST">
-            <div className="relative">
+          <form>
+            <div className="relative  shadow-default border dark:border-strokedark dark:bg-boxdark p-2">
               <input
                 type="text"
                 placeholder="Keress rá bármilyen növényre..."
-                className="text-xl w-full bg-transparent pl-1 pr-4 text-black focus:outline-none dark:text-white xl:w-125"
+                className="text-lg w-full bg-transparent pl-1 pr-4 text-black focus:outline-none dark:text-white xl:w-125 mb-2 "
+                onChange={searchIntro}
               />
+
               {/* Search button */}
-              <button className="absolute right-0 top-1/2 -translate-y-1/2">
+              <button
+                className="absolute right-0 top-1/2 -translate-y-1/2 flex"
+                type="submit"
+              >
                 <svg
-                  className="fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary"
+                  className="fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary mr-3"
                   width="20"
                   height="20"
                   viewBox="0 0 20 20"
@@ -92,10 +105,15 @@ const Header = (props: {
               </button>
             </div>
           </form>
+          {showFilters && (
+            <div className="mt-2 w-full">
+              <SearchFilters />
+            </div>
+          )}
         </div>
 
-        <div className="flex items-center gap-3 2xsm:gap-7">
-          <ul className="flex items-center gap-2 2xsm:gap-4">
+        <div className="flex items-start">
+          <ul className="flex items-start">
             {/* <!-- Dark Mode Toggler --> */}
             <DarkModeSwitcher />
             {/* <!-- Dark Mode Toggler --> */}

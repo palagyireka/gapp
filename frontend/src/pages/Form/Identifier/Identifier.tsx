@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Breadcrumb from '../../../components/Breadcrumbs/Breadcrumb';
-import CheckboxTwo from '../../../components/Checkboxes/CheckboxTwo';
+import CheckboxTwo from '../../../components/Checkbox';
 import DatePickerOne from '../../../components/Forms/DatePicker/DatePickerOne';
 import SelectGroupTwo from '../../../components/Forms/SelectGroup/SelectGroupTwo';
 
