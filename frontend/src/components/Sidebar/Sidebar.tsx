@@ -6,9 +6,14 @@ import Logo from '../../images/logo/logo.svg';
 interface SidebarProps {
   sidebarOpen: boolean;
   setSidebarOpen: (arg: boolean) => void;
+  onMenuItemClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
-const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
+const Sidebar = ({
+  sidebarOpen,
+  setSidebarOpen,
+  onMenuItemClick,
+}: SidebarProps) => {
   const location = useLocation();
   const { pathname } = location;
 
@@ -109,6 +114,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     (pathname === '/' || pathname.includes('dashboard')) &&
                     'bg-graydark dark:bg-meta-4'
                   }`}
+                  onClick={onMenuItemClick}
                 >
                   <svg
                     className="fill-current"
@@ -145,6 +151,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     pathname.includes('calendar') &&
                     'bg-graydark dark:bg-meta-4'
                   }`}
+                  onClick={onMenuItemClick}
                 >
                   <svg
                     className="fill-current"
@@ -249,6 +256,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
                               }
+                              onClick={onMenuItemClick}
                             >
                               Növényhatározó
                             </NavLink>
@@ -260,6 +268,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
                               }
+                              onClick={onMenuItemClick}
                             >
                               Környezetfelmérés - Növényajánló
                             </NavLink>
@@ -271,6 +280,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                 (isActive && '!text-white')
                               }
+                              onClick={onMenuItemClick}
                             >
                               Növénydoktor - Mi baja lehet a növényemnek?
                             </NavLink>

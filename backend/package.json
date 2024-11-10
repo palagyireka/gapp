@@ -1,8 +1,22 @@
 {
+  "name": "gapp",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx app.ts"
+  },
   "dependencies": {
+    "@types/express": "^5.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "mongodb": "4.1",
-    "mongoose": "^8.8.1"
+    "mongoose": "^8.8.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "nodemon": "^3.1.7",
+    "tsconfig-paths": "^4.2.0"
   }
 }

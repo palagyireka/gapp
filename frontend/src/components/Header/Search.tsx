@@ -3,15 +3,66 @@ import { useState } from 'react';
 import DarkModeSwitcher from './DarkModeSwitcher';
 import SearchFilters from './SearchFilters';
 import LogoIcon from '../../images/logo/logo-icon.svg';
+import { Result } from '../../types/result';
 
-const Header = (props: {
+interface HeaderProps {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
+  onFetchedSearch: (results: Result[]) => void;
+  restoreSearch: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const Header = ({
+  sidebarOpen,
+  setSidebarOpen,
+  onFetchedSearch,
+  restoreSearch,
 }) => {
+  const [filterValue, setFilter] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState('');
   const [showFilters, setShowFilters] = useState(false);
-  // Ha valaki rákattint a keresésre, adjon ki rövid tájékoztatót a lehetőségekről.
-  const searchIntro = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setShowFilters(event.target.value.length > 0);
+  // const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleFilterChange = (filter: string) => {
+    setFilter(filter);
+    console.log('Selected filter:', filter);
+  };
+
+  const searchIntro = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+    setShowFilters(e.target.value.length > 0);
+  };
+  const handleSearchClick = async (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.preventDefault();
+    setLoading(true);
+    try {
+      // Make the API request with the search query
+      const response = await fetch(
+        `http://localhost:4000/api/search?q=${searchTerm}&f=${filterValue}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      if (!response.ok) {
+        throw new Error('Failed to fetch search results');
+      }
+      const data = await response.json(); // Parse the JSON response
+      console.log(
+        'Visszajött a json válasz, onFetchedSearch függvény beállítja a választ az értékének.',
+      );
+      onFetchedSearch(data);
+    } catch (error) {
+      console.error('Error fetching search data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none h-fit">
@@ -23,7 +74,7 @@ const Header = (props: {
             aria-controls="sidebar"
             onClick={(e) => {
               e.stopPropagation();
-              props.setSidebarOpen(!props.sidebarOpen);
+              setSidebarOpen(!sidebarOpen);
             }}
             className="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden"
           >
@@ -31,29 +82,29 @@ const Header = (props: {
               <span className="du-block absolute right-0 h-full w-full">
                 <span
                   className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-[0] duration-200 ease-in-out dark:bg-white ${
-                    !props.sidebarOpen && '!w-full delay-300'
+                    !sidebarOpen && '!w-full delay-300'
                   }`}
                 ></span>
                 <span
                   className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-150 duration-200 ease-in-out dark:bg-white ${
-                    !props.sidebarOpen && 'delay-400 !w-full'
+                    !sidebarOpen && 'delay-400 !w-full'
                   }`}
                 ></span>
                 <span
                   className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-200 duration-200 ease-in-out dark:bg-white ${
-                    !props.sidebarOpen && '!w-full delay-500'
+                    !sidebarOpen && '!w-full delay-500'
                   }`}
                 ></span>
               </span>
               <span className="absolute right-0 h-full w-full rotate-45">
                 <span
                   className={`absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black delay-300 duration-200 ease-in-out dark:bg-white ${
-                    !props.sidebarOpen && '!h-0 !delay-[0]'
+                    !sidebarOpen && '!h-0 !delay-[0]'
                   }`}
                 ></span>
                 <span
                   className={`delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-black duration-200 ease-in-out dark:bg-white ${
-                    !props.sidebarOpen && '!h-0 !delay-200'
+                    !sidebarOpen && '!h-0 !delay-200'
                   }`}
                 ></span>
               </span>
@@ -74,12 +125,14 @@ const Header = (props: {
                 placeholder="Keress rá bármilyen növényre..."
                 className="text-lg w-full bg-transparent pl-1 pr-4 text-black focus:outline-none dark:text-white xl:w-125 mb-2 "
                 onChange={searchIntro}
+                value={searchTerm}
               />
 
               {/* Search button */}
               <button
                 className="absolute right-0 top-1/2 -translate-y-1/2 flex"
                 type="submit"
+                onClick={handleSearchClick}
               >
                 <svg
                   className="fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary mr-3"
@@ -107,7 +160,14 @@ const Header = (props: {
           </form>
           {showFilters && (
             <div className="mt-2 w-full">
-              <SearchFilters />
+              <SearchFilters
+                hide={(e) => {
+                  setSearchTerm('');
+                  setShowFilters(false);
+                  restoreSearch(e);
+                }}
+                onFilterChange={handleFilterChange}
+              />
             </div>
           )}
         </div>

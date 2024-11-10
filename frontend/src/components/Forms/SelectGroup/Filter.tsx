@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 interface FilterProps {
-  // onSelectionChange: (selected: string) => void;
-  options: string[];
+  options: string[][];
+  onSelectionChange: (selected: string) => void;
 }
 
-const Filter: React.FC<FilterProps> = ({ options }) => {
+const Filter: React.FC<FilterProps> = ({ options, onSelectionChange }) => {
   const [selectedOption, setSelectedOption] = useState<string>('');
   const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
 
@@ -20,7 +20,7 @@ const Filter: React.FC<FilterProps> = ({ options }) => {
           value={selectedOption}
           onChange={(e) => {
             setSelectedOption(e.target.value);
-            // onSelectionChange(e.target.value);
+            onSelectionChange(e.target.value);
             changeTextColor();
           }}
           className={`relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary ${
@@ -32,8 +32,8 @@ const Filter: React.FC<FilterProps> = ({ options }) => {
           </option>
           {options.map((o) => {
             return (
-              <option value={o} className="text-body dark:text-bodydark">
-                {o}
+              <option value={o[1]} className="text-body dark:text-bodydark">
+                {o[0]}
               </option>
             );
           })}
