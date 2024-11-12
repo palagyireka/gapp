@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import searchController from "@controllers/search-controller";
+import randomPlant from "@controllers/randomplant";
 
 const gapp = express.Router();
 
@@ -23,9 +24,14 @@ gapp.get("/search", async (req, res) => {
   } catch (e) {
     console.log("Error trying: ", e);
   }
-  if (!res.headersSent) {
-    // Ensure no additional response is sent after headers are sent
-    res.status(500).json({ error: "Internal server error" });
+});
+
+gapp.get("/random", async (req, res) => {
+  try {
+    const result = await randomPlant(res);
+    res.json(result);
+  } catch (e) {
+    console.log("Error trying to get random plant:", e);
   }
 });
 

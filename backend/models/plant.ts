@@ -4,11 +4,11 @@ const PlantSchema = new mongoose.Schema(
   {
     category: String,
     subcategory: String,
-    group: String,
     name: String,
+    sci_name: String,
     url: String,
     desc: String,
-    sci_name: String,
+    img_url: String,
   },
   { collection: "plants" }
 );

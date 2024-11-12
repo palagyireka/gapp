@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
-import Calendar from './pages/Calendar';
+import FoundPlant from './pages/main/FoundPlant';
 import About from './pages/main/About';
 import Identifier from './pages/Form/Identifier/Identifier';
 import IdentifierResult from './pages/Form/Identifier/IdentifierResult';
@@ -40,11 +39,11 @@ function App() {
           }
         />
         <Route
-          path="/calendar"
+          path="/found-plant"
           element={
             <>
-              <PageTitle title="GAPP | Kertésznaptár" />
-              <Calendar />
+              <PageTitle title="GAPP | Keresett növény" />
+              <FoundPlant />
             </>
           }
         />

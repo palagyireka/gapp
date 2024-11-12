@@ -1,8 +1,10 @@
 export type Result = {
-  name: string;
+  _id: string;
   category: string;
-  group?: string;
-  desc: string;
+  subcategory?: string;
+  name: string;
+  sci_name: string;
   url: string;
-  sci_name: number;
+  desc: string;
+  img_url: string;
 };
