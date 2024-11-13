@@ -7,14 +7,20 @@ import mongoose from "mongoose";
 
 const PlantSchema = new mongoose.Schema(
   {
-    category: String,
+    category: {
+      type: String,
+      enum: ["room", "dekor", "useful", "local", "fruit", "veggie"],
+      required: true,
+    },
     subcategory: String,
-    group: String,
     name: String,
     url: String,
     desc: String,
     sci_name: String,
-    img_src_array: [String],
+    img_src_array: {
+      type: [String],
+      default: [],
+    },
   },
   { collection: "plants" }
 );
