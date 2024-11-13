@@ -1,0 +1,32 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "app.ts",
+    "controllers/search-controller.ts",
+    "controllers/randomplant.ts",
+    "routes/api.ts",
+    "models/plant.ts"
+  ],
+  "out": "docs",
+  "exclude": ["**/node_modules/**"],
+  "excludeExternals": true,
+  "includeVersion": true,
+  "name": "GAPP Backend Dokumentáció",
+  "theme": "default",
+  "categorizeByGroup": false,
+  "defaultCategory": "Modulok",
+  "categoryOrder": ["Mag", "Útvonalak", "Irányítók", "Modellek"],
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true
+  },
+  "searchInComments": true,
+  "sort": ["source-order"],
+  "validation": {
+    "invalidLink": true,
+    "notDocumented": true
+  },
+  "readme": "none",
+  "tsconfig": "./tsconfig.json",
+  "plugin": ["typedoc-plugin-mermaid"]
+}

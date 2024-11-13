@@ -1,0 +1,89 @@
+# GAPP Backend Documentation
+
+## Project Overview
+A GAPP egy Node.js alapú TypeScript back-end alkalmazás, amely növényekkel kapcsolatos adatokat szolgáltat REST API-n keresztül. Az alkalmazás Express.js keretrendszert használ a HTTP kérések kezeléséhez és MongoDB adatbázist az adatok tárolásához.
+
+## Core Components
+
+### Application Core (app.ts)
+- Express szerver konfigurációja
+- MongoDB kapcsolat kezelése
+- CORS beállítások
+- API útvonalak regisztrálása
+
+### API Routes (routes/api.ts)
+- `/api/search` - Növények keresése név és kategória alapján
+- `/api/random` - Véletlenszerű növény lekérés
+
+### Controllers
+- `search-controller.ts` - Keresési logika implementációja
+- `randomplant.ts` - Véletlenszerű növény kiválasztásának logikája
+
+## Getting Started
+
+### Installation
+```bash
+yarn install
+```
+
+
+### Running the Application
+```bash
+yarn run dev
+```
+
+## API Documentation
+
+### Search Endpoint
+```typescript
+GET /api/search?q={searchTerm}&f={filter}
+```
+
+### Random Plant Endpoint
+```typescript
+GET /api/random
+```
+
+## Project Structure
+```
+├── app.ts
+├── routes/
+│   └── api.ts
+├── controllers/
+│   ├── search-controller.ts
+│   └── randomplant.ts
+└── models/
+    └── plant.ts
+```
+
+classDiagram
+    class App {
+        +express: Application
+        +PORT: number
+        +initializeDatabase()
+        +startServer()
+    }
+    
+    class ApiRouter {
+        +searchRoute()
+        +randomRoute()
+    }
+    
+    class SearchController {
+        +search(q: string, f: string)
+    }
+    
+    class RandomPlantController {
+        +getRandomPlant()
+    }
+    
+    class Plant {
+        +name: string
+        +category: string
+    }
+
+    App --> ApiRouter : uses
+    ApiRouter --> SearchController : calls
+    ApiRouter --> RandomPlantController : calls
+    SearchController --> Plant : queries
+    RandomPlantController --> Plant : queries

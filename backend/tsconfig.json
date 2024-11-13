@@ -1,13 +1,17 @@
 {
   "compilerOptions": {
-    "module": "ESNext", // Or "ES6"
-    "target": "ESNext", // Or "ES6"
+    "module": "commonjs", // Or "ES6"
+    "target": "es6", // Or "ES6"
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "./dist",
     "rootDir": "./",
     "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
     "baseUrl": "./",
     "paths": {
       "@controllers/*": ["controllers/*"],
@@ -15,6 +19,6 @@
       "@models/*": ["models/*"]
     }
   },
-  "include": ["app.ts", "controllers/*", "routes/*"],
-  "exclude": ["node_modules"]
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }
