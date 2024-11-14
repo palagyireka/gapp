@@ -39,7 +39,7 @@ const PlantCard = () => {
   return (
     <div className="rounded-sm border bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
       <img
-        src={plant.img_url ? plant.img_url : ''}
+        src={plant.img_src_array[0] ? plant.img_src_array[0] : ''}
         alt={plant.name}
         className="w-full h-48 object-cover rounded-sm mb-4"
       />

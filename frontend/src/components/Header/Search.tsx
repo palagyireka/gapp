@@ -9,7 +9,7 @@ interface HeaderProps {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
   onFetchedSearch: (results: Result[]) => void;
-  restoreSearch: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  restoreSearch: () => void;
 }
 
 const Header = ({
@@ -161,10 +161,8 @@ const Header = ({
           {showFilters && (
             <div className="mt-2 w-full">
               <SearchFilters
-                hide={(e) => {
-                  setSearchTerm('');
-                  setShowFilters(false);
-                  restoreSearch(e);
+                hide={() => {
+                  restoreSearch;
                 }}
                 onFilterChange={handleFilterChange}
               />

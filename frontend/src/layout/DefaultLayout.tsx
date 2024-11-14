@@ -7,9 +7,11 @@ import { Result } from '../types/result';
 const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchResults, setResults] = useState<any[]>();
+
   const clearResultsPage = () => {
     setResults([]); // Clears searchResults in the parent component
   };
+
   const loadResults = (results: Result[]) => {
     console.log('DefaultLayout triggerelődött, betöltenek az eredmények.');
     setResults(results);
@@ -45,7 +47,12 @@ const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
                   <h2>Search Results</h2>
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">
                     {searchResults.map((result) => (
-                      <SearchResult data={result} />
+                      <SearchResult
+                        data={result}
+                        restoreSearch={() => {
+                          setResults([]);
+                        }}
+                      />
                     ))}
                   </div>
                 </div>

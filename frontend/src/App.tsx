@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import Loader from './common/Loader';
+import Loader from './common/Loader/loader';
 import PageTitle from './components/PageTitle';
 import FoundPlant from './pages/main/FoundPlant';
 import About from './pages/main/About';
@@ -8,7 +8,6 @@ import Identifier from './pages/Form/Identifier/Identifier';
 import IdentifierResult from './pages/Form/Identifier/IdentifierResult';
 import InsectResult from './pages/Form/PlantDoctor/InsectResult';
 import CropResult from './pages/Form/PlantDoctor/CropResult';
-import RecommendationSurvey from './pages/Form/RecommendationSurvey';
 import PlantDoctor from './pages/Form/PlantDoctor/PlantDoctor';
 import DefaultLayout from './layout/DefaultLayout';
 
@@ -62,15 +61,6 @@ function App() {
             <>
               <PageTitle title="GAPP | Azonosított növények" />
               <IdentifierResult />
-            </>
-          }
-        />
-        <Route
-          path="/forms/recommendation-survey"
-          element={
-            <>
-              <PageTitle title="GAPP | Környezetfelmérés - Növényajánló" />
-              <RecommendationSurvey />
             </>
           }
         />

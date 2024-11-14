@@ -6,5 +6,5 @@ export type Result = {
   sci_name: string;
   url: string;
   desc: string;
-  img_url: string;
+  img_src_array: [string];
 };

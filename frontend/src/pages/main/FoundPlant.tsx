@@ -9,7 +9,15 @@ const FoundPlant: React.FC = () => {
       <div className="text-lg rounded-sm border  bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark mb-9">
         <h3>{plantData.name}</h3>
         <h2>{plantData.sci_name}</h2>
-        <img src={plantData.img_url} alt={plantData.name} />
+        <div>
+          {plantData.img_src_array.map((img: string) => {
+            return (
+              <>
+                <img src={img} alt={plantData.name} />
+              </>
+            );
+          })}
+        </div>
         <p>{plantData.desc}</p>
         <p>
           <a href={plantData.url}>Forrás</a>

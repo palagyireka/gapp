@@ -189,7 +189,7 @@ const IdentifierResult = () => {
     created: 1730992166.844757,
     completed: 1730992167.050493,
   });
-  const convertedData = JSON.parse(mockData);
+  const convertedData = JSON.parse(plantData);
   const plantArray = convertedData.result.classification.suggestions;
 
   return (
