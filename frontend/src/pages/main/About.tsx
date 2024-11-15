@@ -5,10 +5,10 @@ const About: React.FC = () => {
   return (
     <>
       <div className="text-lg rounded-sm border  bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark mb-9">
-        <h2>Üdvözöllek a kertészkedési tippeket adó GAPP főoldalán!</h2>
+        <h2>Üdvözöllek a GAPP főoldalán!</h2>
         <p>
-          A weboldalon számos növényfajt és a hozzájuk tartozó információkat,
-          ültetési útmutatót megtalálsz.
+          A weboldalon számos növényfajt és a hozzájuk tartozó információkat
+          megtalálsz. Találsz növény- és kártevő azonosítót is.
         </p>
         <p>A GAPP projekt egy diplomamunka részeként jött létre.</p>
       </div>
